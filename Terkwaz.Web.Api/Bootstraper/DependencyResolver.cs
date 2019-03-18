@@ -2,7 +2,10 @@
 {
     using Autofac;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Options;
     using Terkwaz.Data.Context;
+    using Terkwaz.Data.Repositories;
+    using Terkwaz.Web.Api.Identity;
 
     public class DependencyResolver : Module
     {
@@ -21,6 +24,9 @@
         private void LoadModules(ContainerBuilder builder)
         {
             builder.RegisterType<TerkwazDbContext>().InstancePerLifetimeScope();
+            builder.RegisterType<UserRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
+
+            builder.Register(context => context.Resolve<IOptions<IdentityConfig>>().Value);
         }
     }
 }

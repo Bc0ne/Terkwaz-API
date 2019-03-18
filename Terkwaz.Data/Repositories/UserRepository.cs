@@ -1,5 +1,6 @@
 ﻿namespace Terkwaz.Data.Repositories
 {
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Security.Cryptography;
     using System.Text;
@@ -14,6 +15,11 @@
         public UserRepository(TerkwazDbContext context)
         {
             _context = context ?? throw new ArgumentNullException("Context is Null");
+        }
+
+        public Task<User> GetUserByEmailAsync(string email)
+        {
+            return _context.Users.SingleOrDefaultAsync(x => x.Email == email);
         }
 
         public async Task<User> RegisterAsync(User user, string password)

@@ -5,5 +5,6 @@
     public interface IUserRepository
     {
         Task<User> RegisterAsync(User user, string password);
+        Task<User> GetUserByEmailAsync(string email);
     }
 }
