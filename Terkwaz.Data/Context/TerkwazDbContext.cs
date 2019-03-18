@@ -6,7 +6,6 @@
 
     public class TerkwazDbContext : DbContext
     {
-
         public TerkwazDbContext(DbContextOptions<TerkwazDbContext> options)
             : base(options)
         {

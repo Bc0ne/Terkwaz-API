@@ -7,10 +7,10 @@
     {
         public static void Main(string[] args)
         {
-            WebHostBuilder(args).Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IWebHost WebHostBuilder(string[] args) =>
+        public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
             .ConfigureServices(services => services.AddAutofac())
