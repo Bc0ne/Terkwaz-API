@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Domain", "01-Domain", "{389F70ED-442F-45B9-9EA2-717CD49A9CFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Data", "02-Data", "{13189F8B-FBAC-4BF6-87AC-70834DA1AB24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Web", "03-Web", "{735F7CB9-4546-4B62-9574-B917E621230D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terkwaz.Domain", "Terkwaz.Domain\Terkwaz.Domain.csproj", "{34D2660D-15FE-4F97-BD3B-DC6F0E0CEAD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terkwaz.Data", "Terkwaz.Data\Terkwaz.Data.csproj", "{BA5A52D0-52E1-4312-8779-FACCC5957C05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terkwaz.Api.Models", "Terkwaz.Api.Models\Terkwaz.Api.Models.csproj", "{27B7DA8C-5E79-41C7-AA9F-6719C880E6B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terkwaz.Web.Api", "Terkwaz.Web.Api\Terkwaz.Web.Api.csproj", "{318E2ECA-0C72-457D-869C-6014019DFCE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34D2660D-15FE-4F97-BD3B-DC6F0E0CEAD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D2660D-15FE-4F97-BD3B-DC6F0E0CEAD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D2660D-15FE-4F97-BD3B-DC6F0E0CEAD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D2660D-15FE-4F97-BD3B-DC6F0E0CEAD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA5A52D0-52E1-4312-8779-FACCC5957C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA5A52D0-52E1-4312-8779-FACCC5957C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA5A52D0-52E1-4312-8779-FACCC5957C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA5A52D0-52E1-4312-8779-FACCC5957C05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27B7DA8C-5E79-41C7-AA9F-6719C880E6B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27B7DA8C-5E79-41C7-AA9F-6719C880E6B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27B7DA8C-5E79-41C7-AA9F-6719C880E6B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27B7DA8C-5E79-41C7-AA9F-6719C880E6B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{318E2ECA-0C72-457D-869C-6014019DFCE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{318E2ECA-0C72-457D-869C-6014019DFCE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{318E2ECA-0C72-457D-869C-6014019DFCE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{318E2ECA-0C72-457D-869C-6014019DFCE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{34D2660D-15FE-4F97-BD3B-DC6F0E0CEAD4} = {389F70ED-442F-45B9-9EA2-717CD49A9CFB}
+		{BA5A52D0-52E1-4312-8779-FACCC5957C05} = {13189F8B-FBAC-4BF6-87AC-70834DA1AB24}
+		{27B7DA8C-5E79-41C7-AA9F-6719C880E6B8} = {735F7CB9-4546-4B62-9574-B917E621230D}
+		{318E2ECA-0C72-457D-869C-6014019DFCE0} = {735F7CB9-4546-4B62-9574-B917E621230D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F200CEE-8D1E-46A8-9E2A-893E13F95357}
+	EndGlobalSection
+EndGlobal
