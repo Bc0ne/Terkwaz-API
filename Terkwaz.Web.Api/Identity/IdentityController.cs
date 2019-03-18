@@ -1,7 +1,6 @@
 ﻿namespace Terkwaz.Web.Api.Identity
 {
     using System;
-    using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
     using System.Linq;
     using System.Net;
@@ -9,7 +8,6 @@
     using System.Text;
     using System.Threading.Tasks;
     using AutoMapper;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.IdentityModel.Tokens;
     using Pharmatolia.API.Models;
@@ -27,6 +25,34 @@
         {
             _userRepository = userRepository;
             _identityConfig = identityConfig;
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> LoginUserAsync([FromBody] UserLoginInputModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new ApiError(400, HttpStatusCode.BadRequest.ToString(), "Email/Password are required."));
+            }
+
+            var userByEmail = await _userRepository.GetUserByEmailAsync(model.Email);
+
+            if (userByEmail == null)
+            {
+                return NotFound(new ApiError(400, HttpStatusCode.NotFound.ToString(), "Email wasn't found."));
+            }
+
+            if (!_userRepository.IsAuthenticatedUser(userByEmail, model.Password))
+            {
+                return BadRequest(new ApiError(400, HttpStatusCode.BadRequest.ToString(), "Email or password is incorrect"));
+            }
+
+            var userOutputModel = Mapper.Map<UserRegisterationOutputModel>(userByEmail);
+
+            userOutputModel.Token = GenerateToken(userByEmail);
+
+            return Ok(userOutputModel);
         }
 
         [HttpPost]

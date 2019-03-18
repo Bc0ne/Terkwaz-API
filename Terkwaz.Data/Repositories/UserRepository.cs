@@ -22,6 +22,50 @@
             return _context.Users.SingleOrDefaultAsync(x => x.Email == email);
         }
 
+        public bool IsAuthenticatedUser(User user, string password)
+        {
+            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
+        {
+
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentNullException("Password can't be null or empty", "password");
+            }
+
+            if (storedHash.Length != 64)
+            {
+                throw new ArgumentException("Invalid length of password hash (64 bytes expected).", "passwordHash");
+            }
+
+            if (storedSalt.Length != 128)
+            {
+                throw new ArgumentException("Invalid length of password salt (128 bytes expected).", "passwordSalt");
+            }
+
+            using (var hmac = new HMACSHA512(storedSalt))
+            {
+                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                for (int idx = 0; idx < computedHash.Length; idx++)
+                {
+                    if (computedHash[idx] != storedHash[idx])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         public async Task<User> RegisterAsync(User user, string password)
         {
             if (string.IsNullOrWhiteSpace(password))
