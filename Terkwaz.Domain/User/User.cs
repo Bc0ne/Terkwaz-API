@@ -1,5 +1,9 @@
-﻿namespace Terkwaz.Domain.User
+﻿
+namespace Terkwaz.Domain.User
 {
+    using System.Collections.Generic;
+    using Blog;
+
     public class User
     {
         public long Id { get; private set; }
@@ -14,6 +18,8 @@
 
         public byte[] PasswordSalt { get; private set; }
 
+        public virtual ICollection<Blog> Blogs { get; set; }
+
         public static User New(string fullName, string email, string photoUrl)
         {
             return new User
@@ -23,6 +29,7 @@
                 PhotoUrl = photoUrl
             };
         }
+
 
         public void UpdatePasswordHashAndSalt(byte[] passwordHash, byte[] passwordSalt)
         {
