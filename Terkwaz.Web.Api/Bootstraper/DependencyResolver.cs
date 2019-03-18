@@ -25,6 +25,7 @@
         {
             builder.RegisterType<TerkwazDbContext>().InstancePerLifetimeScope();
             builder.RegisterType<UserRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<BlogRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
 
             builder.Register(context => context.Resolve<IOptions<IdentityConfig>>().Value);
         }
