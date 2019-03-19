@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Pharmatolia.API.Models;
+    using System.Collections.Generic;
     using System.Net;
     using System.Threading.Tasks;
     using Terkwaz.Api.Models.Blog;
@@ -25,11 +26,31 @@
         }
 
         [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetBlogByIdAsync(long id)
+        {
+            var blogById = await _blogRepository.GetBlogByIdAsync(id);
+
+
+            if (blogById == null)
+            {
+                return NotFound(new ApiError(404, HttpStatusCode.NotFound.ToString(), "Blog wasn't found."));
+            }
+
+            var blogOutputModel = Mapper.Map<BlogOutputModel>(blogById);
+
+            return Ok(blogOutputModel);
+
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetAllBlogsAsync()
         {
-            var blogs = _blogRepository.GetAllBlogs();
+            var blogs = await _blogRepository.GetAllBlogsAsync();
 
+            var blogsOutputModel = Mapper.Map<ICollection<BlogOutputModel>>(blogs);
 
+            return Ok(blogsOutputModel);
         }
 
         [HttpPost]
@@ -60,5 +81,42 @@
 
             return Ok(blogOutputModel);
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> UpdateBlogByIdAsync(long id, [FromBody] BlogUpdateInputModel model)
+        {
+            var blogById = await _blogRepository.GetBlogByIdAsync(id);
+
+            if (blogById == null)
+            {
+                return NotFound(new ApiError(404, HttpStatusCode.NotFound.ToString(), "Blog wasn't found."));
+            }
+
+            blogById.Update(model.Title, model.Subtitle, model.PhotoUrl, model.Body);
+
+            await _blogRepository.UpdateBlogAsync(blogById);
+
+            var blogOutputModel = Mapper.Map<BlogOutputModel>(blogById);
+
+            return Ok(blogOutputModel);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> DeleteBlogByIdAsync(long id)
+        {
+            var blogById = await _blogRepository.GetBlogByIdAsync(id);
+
+            if (blogById == null)
+            {
+                return NotFound(new ApiError(404, HttpStatusCode.NotFound.ToString(), "Blog wasn't found."));
+            }
+
+            await _blogRepository.DeleteBlogByIdAsync(blogById);
+
+            return Ok();
+        }
     }
 }
+

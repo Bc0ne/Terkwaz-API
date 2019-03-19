@@ -33,5 +33,13 @@
                 CreationDate = DateTime.UtcNow
             };
         }
+
+        public void Update(string title, string subtitle, string photoUrl, string body)
+        {
+            Title = title;
+            Subtitle = subtitle;
+            ImageUrl = photoUrl;
+            Body = body;
+        }
     }
 }
