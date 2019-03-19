@@ -1,6 +1,6 @@
 ﻿namespace Pharmatolia.API.Models
 {
-    using Newtonsoft.Json;
+    //using Newtonsoft.Json;
 
     public class ApiError
     {
@@ -8,7 +8,7 @@
 
         public string StatusDescription { get; private set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        //[JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Message { get; private set; }
 
         public ApiError(int statusCode, string statusDescription)

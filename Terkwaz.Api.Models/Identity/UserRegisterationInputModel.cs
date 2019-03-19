@@ -1,18 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace Terkwaz.Api.Models.Identity
 {
+    //using System.ComponentModel.DataAnnotations;
+
     public class UserRegisterationInputModel
     {
-        [Required]
+        //[Required]
         public string FullName { get; set; }
 
-        [Required]
+        //[Required]
         public string Email { get; set; }
 
         public string PhotoUrl { get; set; }
 
-        [Required]
+        //[Required]
         public string password { get; set; }
     }
 }

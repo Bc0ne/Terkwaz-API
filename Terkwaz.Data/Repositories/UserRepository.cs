@@ -94,5 +94,10 @@
                 passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
+
+        public async Task<User> GetUserByIdAsync(long userId)
+        {
+            return await _context.Users.SingleOrDefaultAsync(x => x.Id == userId);
+        }
     }
 }
