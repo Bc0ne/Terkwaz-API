@@ -1,13 +1,13 @@
 ﻿namespace Terkwaz.Api.Models.Identity
 {
-    using System.ComponentModel.DataAnnotations;
+    //using System.ComponentModel.DataAnnotations;
 
     public class UserLoginInputModel
     {
-        [Required]
+        //[Required]
         public string Email { get; set; }
 
-        [Required]
+        //[Required]
         public string Password { get; set; }
     }
 }

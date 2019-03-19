@@ -13,6 +13,7 @@
     using Swashbuckle.AspNetCore.Swagger;
     using System.Text;
     using Terkwaz.Data.Context;
+    using Terkwaz.Web.Api.Blogs;
     using Terkwaz.Web.Api.Bootstraper;
     using Terkwaz.Web.Api.Identity;
 
@@ -76,6 +77,7 @@
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new UserMapper());
+                cfg.AddProfile(new BlogMapper());
             });
         }
 

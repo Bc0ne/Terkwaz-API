@@ -20,5 +20,18 @@
         public string Body { get; private set; }
 
         public DateTime CreationDate { get; private set; }
+
+        public static Blog New(User user, string title, string subtitle, string imageUrl, string body)
+        {
+            return new Blog
+            {
+                User = user,
+                Title = title,
+                Subtitle = subtitle,
+                ImageUrl = imageUrl,
+                Body = body,
+                CreationDate = DateTime.UtcNow
+            };
+        }
     }
 }

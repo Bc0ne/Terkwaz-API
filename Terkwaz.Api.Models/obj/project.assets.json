@@ -201,11 +201,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Api.Models\\Terkwaz.Api.Models.csproj",
+      "projectUniqueName": "E:\\Mahmoud\\Terkwaz-API\\Terkwaz.Api.Models\\Terkwaz.Api.Models.csproj",
       "projectName": "Terkwaz.Api.Models",
-      "projectPath": "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Api.Models\\Terkwaz.Api.Models.csproj",
+      "projectPath": "E:\\Mahmoud\\Terkwaz-API\\Terkwaz.Api.Models\\Terkwaz.Api.Models.csproj",
       "packagesPath": "C:\\Users\\mmogh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Api.Models\\obj\\",
+      "outputPath": "E:\\Mahmoud\\Terkwaz-API\\Terkwaz.Api.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -224,8 +224,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Domain\\Terkwaz.Domain.csproj": {
-              "projectPath": "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Domain\\Terkwaz.Domain.csproj"
+            "E:\\Mahmoud\\Terkwaz-API\\Terkwaz.Domain\\Terkwaz.Domain.csproj": {
+              "projectPath": "E:\\Mahmoud\\Terkwaz-API\\Terkwaz.Domain\\Terkwaz.Domain.csproj"
             }
           }
         }

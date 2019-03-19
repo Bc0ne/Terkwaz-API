@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Domain\\Terkwaz.Domain.csproj",
+      "projectUniqueName": "E:\\Mahmoud\\Terkwaz-API\\Terkwaz.Domain\\Terkwaz.Domain.csproj",
       "projectName": "Terkwaz.Domain",
-      "projectPath": "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Domain\\Terkwaz.Domain.csproj",
+      "projectPath": "E:\\Mahmoud\\Terkwaz-API\\Terkwaz.Domain\\Terkwaz.Domain.csproj",
       "packagesPath": "C:\\Users\\mmogh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Domain\\obj\\",
+      "outputPath": "E:\\Mahmoud\\Terkwaz-API\\Terkwaz.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
