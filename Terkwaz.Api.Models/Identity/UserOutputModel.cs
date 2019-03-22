@@ -1,6 +1,6 @@
 ﻿namespace Terkwaz.Api.Models.Identity
 {
-    public class UserRegisterationOutputModel
+    public class UserOutputModel
     {
         public long UserId { get; set; }
 

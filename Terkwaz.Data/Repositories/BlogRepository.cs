@@ -6,6 +6,7 @@
     using Terkwaz.Data.Context;
     using Terkwaz.Domain.Blog;
     using Microsoft.EntityFrameworkCore;
+    using System.Linq;
 
     public class BlogRepository : IBlogRepository
     {
@@ -24,7 +25,7 @@
 
         public async Task<ICollection<Blog>> GetAllBlogsAsync()
         {
-            return await _context.Blogs.Include(x => x.User).ToListAsync();
+            return await _context.Blogs.Include(x => x.User).OrderByDescending(x => x.CreationDate).ToListAsync();
         }
 
         public async Task<Blog> GetBlogByIdAsync(long id)

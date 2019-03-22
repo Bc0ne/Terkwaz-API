@@ -7,7 +7,7 @@
     {
         public UserMapper()
         {
-            CreateMap<User, UserRegisterationOutputModel>()
+            CreateMap<User, UserOutputModel>()
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Token, opt => opt.Ignore());
         }

@@ -30,7 +30,7 @@
                 Subtitle = subtitle,
                 ImageUrl = imageUrl,
                 Body = body,
-                CreationDate = DateTime.UtcNow
+                CreationDate = DateTime.Now
             };
         }
 

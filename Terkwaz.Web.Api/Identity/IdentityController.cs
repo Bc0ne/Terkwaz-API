@@ -8,6 +8,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using AutoMapper;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.IdentityModel.Tokens;
     using Pharmatolia.API.Models;
@@ -25,6 +26,23 @@
         {
             _userRepository = userRepository;
             _identityConfig = identityConfig;
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetUserByIdAsync(long id)
+        {
+            var userById = await _userRepository.GetUserByIdAsync(id);
+
+            if (userById == null)
+            {
+                return BadRequest(new ApiError(404, HttpStatusCode.NotFound.ToString(), "User wasn't found"));
+            }
+
+            var userOutputModel = Mapper.Map<UserOutputModel>(userById);
+
+            return Ok(userOutputModel);
         }
 
         [HttpPost]
@@ -48,7 +66,7 @@
                 return BadRequest(new ApiError(400, HttpStatusCode.BadRequest.ToString(), "Email or password is incorrect"));
             }
 
-            var userOutputModel = Mapper.Map<UserRegisterationOutputModel>(userByEmail);
+            var userOutputModel = Mapper.Map<UserOutputModel>(userByEmail);
 
             userOutputModel.Token = GenerateToken(userByEmail);
 
@@ -74,7 +92,7 @@
 
             await _userRepository.RegisterAsync(user, model.password);
 
-            var userOutputModel = Mapper.Map<UserRegisterationOutputModel>(user);
+            var userOutputModel = Mapper.Map<UserOutputModel>(user);
 
             userOutputModel.Token = GenerateToken(user);
 
