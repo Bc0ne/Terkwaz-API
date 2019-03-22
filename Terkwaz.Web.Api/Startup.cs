@@ -16,6 +16,7 @@
     using Terkwaz.Web.Api.Blogs;
     using Terkwaz.Web.Api.Bootstraper;
     using Terkwaz.Web.Api.Identity;
+    using Terkwaz.Web.Api.Notifications;
 
     public class Startup
     {
@@ -32,12 +33,25 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+
+            services.AddSignalR();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             var contection = Configuration["ConnectionStrings:TerkwazDbConnection"];
             services.AddDbContext<TerkwazDbContext>(options => options.UseSqlServer(contection));
 
             services.Configure<IdentityConfig>(Configuration.GetSection("IdentitySettings"));
+
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+            }));
 
             var identitySettings = new IdentityConfig();
             Configuration.GetSection("IdentitySettings")?.Bind(identitySettings);
@@ -50,6 +64,7 @@
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
                         ValidIssuer = identitySettings.Issuer,
                         ValidAudience = identitySettings.Audience,
                         IssuerSigningKey = new SymmetricSecurityKey(
@@ -110,6 +125,12 @@
             {
                 c.SwaggerEndpoint("../swagger/v1/swagger.json", "Terkwaz APIs v1");
                 c.RoutePrefix = "docs";
+            });
+
+            app.UseCors("CorsPolicy");
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<NotifyHub>("/notify");
             });
 
             app.UseHttpsRedirection();

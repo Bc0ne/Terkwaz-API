@@ -12786,7 +12786,8 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.1",
       "Swashbuckle.AspNetCore >= 4.0.1",
       "Terkwaz.Api.Models >= 1.0.0",
-      "Terkwaz.Data >= 1.0.0"
+      "Terkwaz.Data >= 1.0.0",
+      "Terkwaz.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12824,6 +12825,9 @@
             },
             "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Data\\Terkwaz.Data.csproj": {
               "projectPath": "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Data\\Terkwaz.Data.csproj"
+            },
+            "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Domain\\Terkwaz.Domain.csproj": {
+              "projectPath": "C:\\Users\\mmogh\\source\\repos\\Terkwaz\\Terkwaz.Domain\\Terkwaz.Domain.csproj"
             }
           }
         }

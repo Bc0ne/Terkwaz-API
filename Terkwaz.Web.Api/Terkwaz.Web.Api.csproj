@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Terkwaz.Api.Models\Terkwaz.Api.Models.csproj" />
     <ProjectReference Include="..\Terkwaz.Data\Terkwaz.Data.csproj" />
+    <ProjectReference Include="..\Terkwaz.Domain\Terkwaz.Domain.csproj" />
   </ItemGroup>
 
 </Project>

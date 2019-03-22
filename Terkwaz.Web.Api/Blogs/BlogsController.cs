@@ -3,26 +3,33 @@
     using AutoMapper;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.SignalR;
     using Pharmatolia.API.Models;
     using System.Collections.Generic;
     using System.Net;
     using System.Threading.Tasks;
     using Terkwaz.Api.Models.Blog;
     using Terkwaz.Domain.Blog;
+    using Terkwaz.Domain.Notification;
     using Terkwaz.Domain.User;
+    using Terkwaz.Web.Api.Notifications;
 
     [Authorize]
-    [Route("api/blogs")]
     [ApiController]
+    [Route("api/blogs")]
     public class BlogsController : ControllerBase
     {
         private IBlogRepository _blogRepository;
         private IUserRepository _userRepository;
+        private IHubContext<NotifyHub, ITypedHubClient> _hubContext;
 
-        public BlogsController(IBlogRepository blogRepository, IUserRepository userRepository)
+        public BlogsController(IBlogRepository blogRepository,
+            IUserRepository userRepository,
+            IHubContext<NotifyHub, ITypedHubClient> hubContext)
         {
             _blogRepository = blogRepository;
             _userRepository = userRepository;
+            _hubContext = hubContext;
         }
 
         [HttpGet]
@@ -78,6 +85,13 @@
             await _blogRepository.AddBlogAsync(blog);
 
             var blogOutputModel = Mapper.Map<BlogOutputModel>(blog);
+
+            await _hubContext.Clients.All.BroadcastNotification(new BlogNotification
+            {
+                BlogId = blog.Id,
+                BlogTitle = blog.Title,
+                AuthorName = blog.User.FullName
+            });
 
             return Ok(blogOutputModel);
         }
